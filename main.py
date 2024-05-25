@@ -1,14 +1,18 @@
 import pygame, sys 
 from cella import Cella
-from pygame.locals import * 
+from pygame.locals import *
+from random import randint
 
 larghezza_schermo = 600
 altezza_schermo = 600
 dimensioni_schermo = (larghezza_schermo, altezza_schermo)
 schermo = pygame.display.set_mode(dimensioni_schermo)
 pygame.display.set_caption("campo minato")
+pygame.init()
+pygame.font.init()
 
 colore = ()
+valore = "!"
 numero_colonne = 10
 numero_righe = 10
 altezza_cella = (altezza_schermo/numero_righe)
@@ -21,9 +25,10 @@ celle = []
 for riga in range(numero_righe):
     riga_celle = []
     for colonna in range(numero_colonne):
-        cella = Cella(colonna * larghezza_cella, riga * altezza_cella, larghezza_cella, altezza_cella, riga, colonna, colore)
+        cella = Cella(colonna * larghezza_cella, riga * altezza_cella, larghezza_cella, altezza_cella, riga, colonna, colore, valore)
         riga_celle.append(cella)
     celle.append(riga_celle)
+
 
 while True:
     for event in pygame.event.get():
@@ -50,6 +55,7 @@ while True:
     for riga in celle:
         for cella in riga:
             cella.draw(schermo)
+            cella.stampa_numero(schermo)
  
     pygame.display.flip()
     clock.tick(fps)  
