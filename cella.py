@@ -45,6 +45,30 @@ class Cella:
         self.draw(surface)
         self.colore = colore_iniziale
     
+    def contamine(self, riga, colonna):
+        mine=0
+        if(self.riga-1>=0 and self.riga-1<=7 and self.colonna-1>=0 and self.colonna-1<=11 and self.valore[self.riga-1][self.colonna-1]=="B"):
+            mine=mine+1
+        if(self.riga-1>=0 and self.riga-1<=7 and self.colonna>=0 and self.colonna<=11 and self.valore[self.riga-1][self.colonna]=="B"):
+            mine=mine+1
+        if(self.rig-1>=0 and self.riga-1<=7 and self.colonna+1>=0 and self.colonna+1<=11 and  self.valore[self.riga-1][self.colonna+1]=="B"):
+            mine=mine+1
+        if(self.riga>=0 and self.riga<=7 and self.colonna-1>=0 and self.colonna-1<=11 and self.valore[self.riga][self.colonna-1]=="B"):
+            mine=mine+1
+        if(self.rig>=0 and self.riga<=7 and self.colonna+1>=0 and self.colonna+1<=11 and  self.valore[self.riga][self.colonna+1]=="B"):
+            mine=mine+1
+        if(self.riga+1>=0 and self.riga+1<=7 and self.colonna-1>=0 and self.colonna-1<=11 and  self.valore[self.riga+1][self.colonna-1]=="B"):
+            mine=mine+1
+        if(self.riga+1>=0 and self.riga+1<=7 and self.colonna>=0 and self.colonna<=11 and self.valore[self.riga+1][self.colonna]=="B"):
+            mine=mine+1
+        if(self.riga+1>=0 and self.riga+1<=7 and self.colonna+1>=0 and self.colonna+1<=11 and self.valore[self.riga+1][self.colonna+1]=="B"):
+            mine=mine+1
+        return mine
+
+
+
+
+    
 
 
 

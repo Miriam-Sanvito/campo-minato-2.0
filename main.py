@@ -22,12 +22,25 @@ clock = pygame.time.Clock()
 fps = 60
 
 celle = []
-for riga in range(numero_righe):
+for riga in range(2, numero_righe):
     riga_celle = []
     for colonna in range(numero_colonne):
         cella = Cella(colonna * larghezza_cella, riga * altezza_cella, larghezza_cella, altezza_cella, riga, colonna, colore, valore)
         riga_celle.append(cella)
     celle.append(riga_celle)
+
+mine = 0
+while mine<11:
+    riga = randint(0, numero_righe-1)
+    colonna = randint(0, numero_colonne-1)
+    if celle[riga][colonna].valore != "B":
+        celle[riga][colonna].valore = "B"
+        mine+= 1
+ 
+for riga in celle:
+    for cella in riga:
+        if cella.valore != "B":
+            cella.valore = cella.contamine()
 
 
 while True:
