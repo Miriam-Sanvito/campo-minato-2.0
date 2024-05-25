@@ -13,10 +13,11 @@ class Cella:
         self.colore3= (233, 242, 228)
         self.colore4= (191, 204, 184)
         self.colore5 = (247, 247, 247)
-        self.valore = valore
         self.image = pygame.Surface((larghezza, altezza))
         self.rect = pygame.Rect(x, y, larghezza, altezza )
-        
+    
+    
+
         if (self.riga + self.colonna)%2 == 0:
             self.colore = self.colore1
         else:
@@ -39,12 +40,16 @@ class Cella:
             self.colore = self.colore4
         self.draw(surface)
     
+    # def sbiadisci(self, surface):
+    #     colore_iniziale = self.colore
+    #     self.colore = self.colore5
+    #     self.draw(surface)
+    #     self.colore = colore_iniziale
+
     def sbiadisci(self, surface):
-        colore_iniziale = self.colore
         self.colore = self.colore5
         self.draw(surface)
         self.colore = colore_iniziale
-    
 
 
 
