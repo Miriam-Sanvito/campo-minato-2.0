@@ -43,6 +43,7 @@ while True:
                     if cella.rect.collidepoint(pos):
                         if event.button == 1:  
                             cella.cambia_colore(schermo)
+                            cella.stampa_numero()
                         elif event.button == 3: 
                             cella.bandiera()
                 
@@ -59,7 +60,7 @@ while True:
     for riga in celle:
         for cella in riga:
             cella.draw(schermo)
-            cella.stampa_numero(schermo)
+            # cella.stampa_numero(schermo)
             
     pygame.display.flip()
     clock.tick(fps)  
