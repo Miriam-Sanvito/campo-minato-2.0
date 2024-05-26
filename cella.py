@@ -16,7 +16,9 @@ class Cella:
         self.valore = valore
         self.image = pygame.Surface((larghezza, altezza))
         self.rect = pygame.Rect(x, y, larghezza, altezza )
-        
+    
+    
+
         if (self.riga + self.colonna)%2 == 0:
             self.colore = self.colore1
         else:
@@ -39,35 +41,16 @@ class Cella:
             self.colore = self.colore4
         self.draw(surface)
     
-    def sbiadisci(self, surface):
-        colore_iniziale = self.colore
-        self.colore = self.colore5
-        self.draw(surface)
-        self.colore = colore_iniziale
-    
-    def contamine(self, riga, colonna):
-        mine=0
-        if(self.riga-1>=0 and self.riga-1<=7 and self.colonna-1>=0 and self.colonna-1<=11 and self.valore[self.riga-1][self.colonna-1]=="B"):
-            mine=mine+1
-        if(self.riga-1>=0 and self.riga-1<=7 and self.colonna>=0 and self.colonna<=11 and self.valore[self.riga-1][self.colonna]=="B"):
-            mine=mine+1
-        if(self.rig-1>=0 and self.riga-1<=7 and self.colonna+1>=0 and self.colonna+1<=11 and  self.valore[self.riga-1][self.colonna+1]=="B"):
-            mine=mine+1
-        if(self.riga>=0 and self.riga<=7 and self.colonna-1>=0 and self.colonna-1<=11 and self.valore[self.riga][self.colonna-1]=="B"):
-            mine=mine+1
-        if(self.rig>=0 and self.riga<=7 and self.colonna+1>=0 and self.colonna+1<=11 and  self.valore[self.riga][self.colonna+1]=="B"):
-            mine=mine+1
-        if(self.riga+1>=0 and self.riga+1<=7 and self.colonna-1>=0 and self.colonna-1<=11 and  self.valore[self.riga+1][self.colonna-1]=="B"):
-            mine=mine+1
-        if(self.riga+1>=0 and self.riga+1<=7 and self.colonna>=0 and self.colonna<=11 and self.valore[self.riga+1][self.colonna]=="B"):
-            mine=mine+1
-        if(self.riga+1>=0 and self.riga+1<=7 and self.colonna+1>=0 and self.colonna+1<=11 and self.valore[self.riga+1][self.colonna+1]=="B"):
-            mine=mine+1
-        return mine
+    # def sbiadisci(self, surface):
+    #     colore_iniziale = self.colore
+    #     self.colore = self.colore5
+    #     self.draw(surface)
+    #     self.colore = colore_iniziale
 
-
-
-
+    # def sbiadisci(self, surface):
+    #     self.colore = self.colore5
+    #     self.draw(surface)
+    #     self.colore = colore_iniziale
     
 
 
