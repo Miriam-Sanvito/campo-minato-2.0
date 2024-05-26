@@ -16,6 +16,7 @@ class Cella:
         self.valore = valore
         self.image = pygame.Surface((larghezza, altezza))
         self.rect = pygame.Rect(x, y, larghezza, altezza )
+        self.bandiere = False
     
     
 
@@ -27,6 +28,10 @@ class Cella:
     def draw(self, surface):
         self.image.fill(self.colore)
         surface.blit(self.image, (self.x, self.y))
+        if self.bandiere:
+            bandiera = pygame.image.load('bandiera.png')
+            bandiera = pygame.transform.scale(bandiera, (int(self.larghezza), int(self.altezza))) 
+            surface.blit(bandiera, (self.x, self.y))
     
     def stampa_numero(self, surface):
         font = pygame.font.Font(None, 74)
@@ -47,13 +52,15 @@ class Cella:
     #     self.draw(surface)
     #     self.colore = colore_iniziale
 
-    # def sbiadisci(self, surface):
-    #     self.colore = self.colore5
-    #     self.draw(surface)
-    #     self.colore = colore_iniziale
-    
+    def sbiadisci(self, surface):
+        self.colore = self.colore5
+        self.draw(surface)
+        self.colore = colore_iniziale
 
 
+    def bandiera(self):
+        self.bandiere = True 
+        
 
 
 
