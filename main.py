@@ -12,7 +12,7 @@ pygame.init()
 pygame.font.init()
 
 colore = ()
-valore = "!"
+valore = '!'
 numero_colonne = 10
 numero_righe = 10
 altezza_cella = (altezza_schermo/numero_righe)
@@ -29,18 +29,20 @@ for riga in range(2, numero_righe):
         riga_celle.append(cella)
     celle.append(riga_celle)
 
-mine = 0
-while mine<11:
-    riga = randint(0, numero_righe-1)
-    colonna = randint(0, numero_colonne-1)
-    if celle[riga][colonna].valore != "B":
-        celle[riga][colonna].valore = "B"
-        mine+= 1
+
+
+# mine = 0
+# while mine<11:
+#     riga = randint(2, numero_righe)
+#     colonna = randint(0, numero_colonne)
+#     if celle[riga][colonna].valore != "B":
+#         celle[riga][colonna].valore = "B"
+#         mine+= 1
  
-for riga in celle:
-    for cella in riga:
-        if cella.valore != "B":
-            cella.valore = cella.contamine()
+# for riga in celle:
+#     for cella in riga:
+#         if cella.valore != "B":
+#             cella.valore = cella.contamine(celle)
 
 
 while True:
@@ -61,19 +63,18 @@ while True:
                             cella.bandiera()
                 
         
-    # pos = pygame.mouse.get_pos()
-    # for riga in celle:
-    #     for cella in riga:
-    #         if cella.rect.collidepoint(pos):
-    #             cella.sbiadisci(schermo)
-    #         else:
-    #             cella.draw(schermo)
+    pos = pygame.mouse.get_pos()
+    for riga in celle:
+        for cella in riga:
+            if cella.rect.collidepoint(pos):
+                cella.sbiadisci(schermo)
+            else:
+                cella.draw(schermo)
                 
     
     for riga in celle:
         for cella in riga:
             cella.draw(schermo)
-            # cella.stampa_numero(schermo)
-            
+
     pygame.display.flip()
     clock.tick(fps)  

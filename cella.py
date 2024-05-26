@@ -51,14 +51,74 @@ class Cella:
             self.colore = self.colore4
         self.draw(surface)
     
-    # def sbiadisci(self, surface):
-    #     colore_iniziale = self.colore
-    #     self.colore = self.colore5
-    #     self.draw(surface)
-    #     self.colore = colore_iniziale
+    def sbiadisci(self, surface):
+        colore_iniziale = self.colore
+        self.colore = self.colore5
+        self.draw(surface)
+        self.colore = colore_iniziale
 
     def bandiera(self):
         self.bandiere = True 
+    
+    # def contamine(self, celle):
+    #     mine = 0
+    #     for riga in range(self.riga - 1, self.riga + 2):
+    #         for colonna in range(self.colonna - 1, self.colonna + 2):
+    #             if 2<= riga < 10 and 0 <= colonna < 10:
+    #                 if celle[riga][colonna].valore == 'B':
+    #                     mine += 1
+    #     return mine
+    
+    
+    # def contamine(self, celle):
+    #     mine = 0
+    #     if riga==2 and colonna ==0:
+    #         for riga in range(self.riga, self.riga+2):
+    #             for colonna in range(self.colonna, self.colonna+2):
+    #                 if celle[riga][colonna].valore == 'B':
+    #                     mine+=1
+    #     elif riga==2 and colonna ==9:
+    #         for riga in range(self.riga, self.riga+2):
+    #             for colonna in range(self.colonna-1, self.colonna+1):
+    #                 if celle[riga][colonna].valore == 'B':
+    #                     mine+=1
+    #     elif riga==9 and colonna ==9:
+    #         for riga in range(self.riga-1, self.riga):
+    #             for colonna in range(self.colonna-1, self.colonna+1):
+    #                 if celle[riga][colonna].valore == 'B':
+    #                     mine+=1
+    #     elif riga ==9 and colonna==0:
+    #         for riga in range(self.riga-1, self.riga):
+    #             for colonna in range(self.colonna, self.colonna+2):
+    #                 if celle[riga][colonna].valore == 'B':
+    #                     mine+=1
+    #     elif riga ==2 and 2<colonna<9:
+    #         for riga in range(self.riga, self.riga+2):
+    #             for colonna in range(self.colonna-1, self.colonna+2):
+    #                 if celle[riga][colonna].valore == 'B':
+    #                     mine+=1
+    #     elif 2<riga<9 and colonna == 9:
+    #         for riga in range(self.riga-1, self.riga+2):
+    #             for colonna in range(self.colonna-1, self.colonna+1):
+    #                 if celle[riga][colonna].valore == 'B':
+    #                     mine+=1
+    #     elif riga == 9 and 2<colonna<9:
+    #         for riga in range(self.riga-1, self.riga+1):
+    #             for colonna in range(self.colonna-1, self.colonna+2):
+    #                 if celle[riga][colonna].valore == 'B':
+    #                     mine+=1
+    #     elif 2<riga<9 and colonna==0:
+    #         for riga in range(self.riga-1, self.riga+2):
+    #             for colonna in range(self.colonna, self.colonna+2):
+    #                 if celle[riga][colonna].valore == 'B':
+    #                     mine+=1
+    #     else:
+    #         for riga in range(self.riga - 1, self.riga + 2):
+    #             for colonna in range(self.colonna - 1, self.colonna + 2):
+    #                 if 0 <= riga < len(celle) and 0 <= colonna < len(celle[0]):
+    #                     if celle[riga][colonna].valore == 'B':
+    #                         mine += 1
+    #     return mine
         
 
 
