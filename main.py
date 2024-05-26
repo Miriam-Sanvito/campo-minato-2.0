@@ -36,13 +36,16 @@ while True:
             pygame.quit()
             sys.exit()
         
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: 
-            pos = pygame.mouse.get_pos()
+        pos = pygame.mouse.get_pos()
+        if event.type == pygame.MOUSEBUTTONDOWN :
             for riga in celle:
                 for cella in riga:
                     if cella.rect.collidepoint(pos):
-                        cella.cambia_colore(schermo)
-
+                        if event.button == 1:  
+                            cella.cambia_colore(schermo)
+                        elif event.button == 3: 
+                            cella.bandiera()
+                
         
     # pos = pygame.mouse.get_pos()
     # for riga in celle:
@@ -57,6 +60,6 @@ while True:
         for cella in riga:
             cella.draw(schermo)
             cella.stampa_numero(schermo)
- 
+            
     pygame.display.flip()
     clock.tick(fps)  
