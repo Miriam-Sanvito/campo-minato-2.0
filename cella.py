@@ -17,6 +17,7 @@ class Cella:
         self.image = pygame.Surface((larghezza, altezza))
         self.rect = pygame.Rect(x, y, larghezza, altezza )
         self.bandiere = False
+        self.numeri = False
     
     
 
@@ -32,11 +33,15 @@ class Cella:
             bandiera = pygame.image.load('bandiera.png')
             bandiera = pygame.transform.scale(bandiera, (int(self.larghezza), int(self.altezza))) 
             surface.blit(bandiera, (self.x, self.y))
+        if self.numeri:
+            font = pygame.font.Font(None, 74)
+            text = font.render(self.valore, True, (255, 255, 255))
+            surface.blit(text, (self.x+15, self.y+7))
     
-    def stampa_numero(self, surface):
-        font = pygame.font.Font(None, 74)
-        text = font.render(self.valore, True, (255, 255, 255))
-        surface.blit(text, (self.x+20, self.y+7))
+    def stampa_numero(self):
+        if self.bandiere == False:
+            self.numeri = True
+    
 
     
     def cambia_colore(self, surface):
@@ -54,8 +59,6 @@ class Cella:
 
     def bandiera(self):
         self.bandiere = True 
-    
-
         
 
 
