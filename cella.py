@@ -52,14 +52,10 @@ class Cella:
     #     self.draw(surface)
     #     self.colore = colore_iniziale
 
-    def sbiadisci(self, surface):
-        self.colore = self.colore5
-        self.draw(surface)
-        self.colore = colore_iniziale
-
-
     def bandiera(self):
         self.bandiere = True 
+    
+
         
 
 
