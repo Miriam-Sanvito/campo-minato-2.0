@@ -31,18 +31,18 @@ fps = 60
 #         riga_celle.append(cella)
 #     celle.append(riga_celle)
 
-mine = 0
-while mine<11:
-    riga = randint(0, numero_righe-1)
-    colonna = randint(0, numero_colonne-1)
-    if celle[riga][colonna].valore != "B":
-        celle[riga][colonna].valore = "B"
-        mine+= 1
+# mine = 0
+# while mine<11:
+#     riga = randint(0, numero_righe-1)
+#     colonna = randint(0, numero_colonne-1)
+#     if celle[riga][colonna].valore != "B":
+#         celle[riga][colonna].valore = "B"
+#         mine+= 1
  
-for riga in celle:
-    for cella in riga:
-        if cella.valore != "B":
-            cella.valore = cella.contamine()
+# for riga in celle:
+#     for cella in riga:
+#         if cella.valore != "B":
+#             cella.valore = cella.contamine()
 
 tavolo = Tavolo(schermo, (0, 85), larghezza_schermo, altezza_schermo-85, numero_righe, numero_colonne)
 while True:
@@ -72,10 +72,12 @@ while True:
     #             cella.draw(schermo)
                 
     
-    for riga in celle:
-        for cella in riga:
-            cella.draw(schermo)
-            # cella.stampa_numero(schermo)
+    # for riga in celle:
+    #     for cella in riga:
+    #         cella.draw(schermo)
+    #         # cella.stampa_numero(schermo)
+
+    tavolo.draw()
             
     pygame.display.flip()
     clock.tick(fps)  

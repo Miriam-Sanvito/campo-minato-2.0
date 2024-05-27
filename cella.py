@@ -57,11 +57,17 @@ import pygame
     #     self.draw(surface)
     #     self.colore = colore_iniziale
 
-    def bandiera(self):
-        self.bandiere = True 
+    # def bandiera(self):
+    #     self.bandiere = True 
         
 
-
+class Cella:
+    def __init__(self, larghezza, altezza, valore = " ", coperto= False):
+        self.altezza = altezza
+        self.larghezza = larghezza
+        self.coperto = coperto
+        self.size = [self.larghezza, self.altezza]
+        self.image = pygame.Surface(self.size)
 
 
 
