@@ -3,6 +3,7 @@ from cella import Cella
 from pygame.locals import *
 from random import randint
 from tavolo import Tavolo
+from barra import Barra
 
 larghezza_schermo = 500
 altezza_schermo = 500
@@ -18,6 +19,12 @@ numero_colonne = 10
 numero_righe = 8
 altezza_cella = (altezza_schermo/numero_righe)
 larghezza_cella = (larghezza_schermo/numero_colonne)
+
+#schermata iniziale
+x_start = 150
+y_start = 300
+larghezza_start = 200
+altezza_start = 100
 
 clock = pygame.time.Clock()
 fps = 60
@@ -44,12 +51,32 @@ fps = 60
 #         if cella.valore != "B":
 #             cella.valore = cella.contamine()
 
-tavolo = Tavolo(schermo, (0, 85), larghezza_schermo, altezza_schermo-85, numero_righe, numero_colonne)
+
+def schermatainiziale():
+    schermo.fill ((0,0,0))
+    rect = pygame.Rect(150, 300, 200, 100)
+    pygame.draw.rect(schermo, (255, 255, 255), rect)  
+    pygame.display.flip()
+    
+
+tavolo = Tavolo(schermo, (0, 75), larghezza_schermo, altezza_schermo-75, numero_righe, numero_colonne)
+barra = Barra(schermo, (0,0), (larghezza_schermo,  75))
+
+cliccato = False
+
 while True:
+    
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    pos = pygame.mouse.get_pos()
+                    start_rect = pygame.Rect(x_start, y_start, larghezza_start, altezza_start)
+                    if start_rect.collidepoint(pos):
+                        cliccato = True
+
         
     #     pos = pygame.mouse.get_pos()
     #     if event.type == pygame.MOUSEBUTTONDOWN :
@@ -76,8 +103,18 @@ while True:
     #     for cella in riga:
     #         cella.draw(schermo)
     #         # cella.stampa_numero(schermo)
+    
 
-    tavolo.draw()
-            
+
+    if cliccato:
+        schermo.fill((0, 0, 0))
+        tavolo.draw()
+        barra.draw()
+
+    else:
+        schermatainiziale()
+    
+    
     pygame.display.flip()
     clock.tick(fps)  
+

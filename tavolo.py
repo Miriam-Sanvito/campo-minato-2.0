@@ -25,6 +25,7 @@ class Tavolo:
             for colonna in range(len(celle[riga])):
                 cella = celle[riga][colonna]
                 if (riga + colonna)%2 == 0:
+                    
                     cella.image.fill((200, 200, 200))
                     cella_pos = (self.pos[0] + colonna * larghezza_cella, self.pos[1] + riga * altezza_cella)
                     self.screen.blit(cella.image, cella_pos)
