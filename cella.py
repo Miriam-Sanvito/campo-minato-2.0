@@ -19,6 +19,7 @@ class Cella:
         self.numero = False
         self.bombe = False
         self.valore = valore
+        self.schiacciata = False
     
     
 
@@ -58,6 +59,7 @@ class Cella:
 
     def bandiera(self):
         self.bandiere = True
+        self.schiacciata = True
     
     def stampa_numero(self):
         if self.bandiere == False:

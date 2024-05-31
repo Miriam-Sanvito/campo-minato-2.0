@@ -67,6 +67,8 @@ cliccato = False
 
 tavolo.piazza_mine()
 
+nbandiere = 10
+
 for i, riga in enumerate(tavolo.celle):
     for j, cella in enumerate(riga):
         if tavolo.celle[i][j].valore != 'B':
@@ -88,22 +90,22 @@ while True:
                             tavolo.cambia_colore(pos)
                             tavolo.stampa_numero(pos)
                             tavolo.bomba(pos)
+
                 if event.button == 3:
                     pos = pygame.mouse.get_pos()
                     if cliccato:
                         if tavolo.rect.collidepoint(pos):
-                            tavolo.bandiera(pos)
+                                tavolo.bandiera(pos)
+                                nbandiere -= 1
+                                
+                            
 
-
-        
-       
-    
 
 
     if cliccato:
         schermo.fill((8, 92, 11))
         tavolo.draw()
-        barra.draw()
+        barra.draw(nbandiere)
 
     else:
         schermatainiziale()
