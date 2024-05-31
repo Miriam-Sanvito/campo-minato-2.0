@@ -12,10 +12,10 @@ class Barra:
         self.inizio_timer = time.time()
         self.orologio_surface = pygame.Surface((40, 40))
         # self.orologio_rect = pygame.Rect(0, 10, 25, 25)
-        self.orologio = pygame.image.load('timer.jpg')
+        self.orologio = pygame.image.load('timer.png').convert_alpha()
         self.orologio = pygame.transform.scale(self.orologio, (40,40))
         self.bandiera_surface = pygame.Surface((40,40))
-        self.bandiera = pygame.image.load("bandiera.png")
+        self.bandiera = pygame.image.load("bandiera.png").convert_alpha()
         self.bandiera = pygame.transform.scale(self.bandiera, (40,40))
 
 

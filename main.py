@@ -126,9 +126,9 @@ while True:
                             tavolo.cambia_colore(pos)
                             tavolo.stampa_numero(pos)
                             tavolo.bomba(pos)
-                            tavolo.perso(pos)
-                        if tavolo.perso(pos):
-                            Gameover = True
+                        #     tavolo.perso(pos)
+                        # if tavolo.perso(pos):
+                        #     Gameover = True
 
                 if event.button == 3:
                     pos = pygame.mouse.get_pos()
@@ -149,8 +149,8 @@ while True:
     else:
         schermatainiziale()
     
-    if Gameover:
-        schermatafinale()
+    # if Gameover:
+    #     schermatafinale()
     
     
     pygame.display.flip()

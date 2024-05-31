@@ -32,7 +32,7 @@ class Cella:
         self.image.fill(self.colore)
         tavolo.blit(self.image, (self.x, self.y))
         if self.bandiere:
-            bandiera = pygame.image.load('bandiera.png')
+            bandiera = pygame.image.load('bandiera.png').convert_alpha()
             bandiera = pygame.transform.scale(bandiera, (int(self.larghezza), int(self.altezza))) 
             tavolo.blit(bandiera, (self.x, self.y))
         if self.numero:
@@ -40,7 +40,7 @@ class Cella:
             text = font.render(str(self.valore), True, (255, 255, 255))
             tavolo.blit(text, (self.x+15, self.y+7))
         if self.bombe:
-            bomba = pygame.image.load('bomba.png')
+            bomba = pygame.image.load('bomba.png').convert_alpha()
             bomba = pygame.transform.scale(bomba, (int(self.larghezza), int(self.altezza)))
             tavolo.blit(bomba, (self.x, self.y))
 

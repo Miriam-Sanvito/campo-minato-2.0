@@ -67,7 +67,7 @@ class Tavolo:
                     if self.celle[riga][colonna].valore == 'B':
                         if riga != cella.riga or colonna!=cella.colonna:
                             mine+=1
-            return mine
+        return mine
     
     def perso(self, pos):
         for riga in self.celle:
