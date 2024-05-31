@@ -100,6 +100,7 @@ tempo_trascorso = barra.aggiorna_timer()
 
 cliccato = False
 Gameover = True
+gioco_iniziato= False
 
 tavolo.piazza_mine()
 
@@ -116,13 +117,15 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    pos = pygame.mouse.get_pos()
+                pos = pygame.mouse.get_pos()
+                if not gioco_iniziato:
                     start_rect = pygame.Rect(x_start, y_start, larghezza_start, altezza_start)
                     if start_rect.collidepoint(pos):
-                        cliccato = True
-                    if cliccato:
+                        gioco_iniziato = True
+                else:
+                    if event.button == 1:
                         if tavolo.rect.collidepoint(pos):
+                            tavolo.rect.collidepoint(pos)
                             tavolo.cambia_colore(pos)
                             tavolo.stampa_numero(pos)
                             tavolo.bomba(pos)
@@ -132,7 +135,7 @@ while True:
 
                 if event.button == 3:
                     pos = pygame.mouse.get_pos()
-                    if cliccato:
+                    if gioco_iniziato:
                         if tavolo.rect.collidepoint(pos):
                                 tavolo.bandiera(pos)
                                 nbandiere -= 1
@@ -141,13 +144,13 @@ while True:
 
 
 
-    if cliccato:
+    if gioco_iniziato:
         schermo.fill((8, 92, 11))
         tavolo.draw()
         barra.draw(nbandiere)
-
     else:
         schermatainiziale()
+
     
     # if Gameover:
     #     schermatafinale()
