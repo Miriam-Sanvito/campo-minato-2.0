@@ -22,19 +22,18 @@ class Tavolo:
             for cella in riga:
                 cella.draw(self.screen)
 
-# if (self.riga + self.colonna)%2 == 0:
-#             self.colore = self.colore1
-#         else:
-#             self.colore = self.colore2
+    def cambia_colore(self, pos):
+        for riga in self.celle:
+            for cella in riga:
+                if cella.rect.collidepoint(pos):
+                    cella.cambia_colore()
+    
+    def bandiera(self, pos):
+        for riga in self.celle:
+            for cella in riga:
+                if cella.rect.collidepoint(pos):
+                    cella.bandiera()
 
 
-        # if self.bandiere:
-        #     bandiera = pygame.image.load('bandiera.png')
-        #     bandiera = pygame.transform.scale(bandiera, (int(self.larghezza), int(self.altezza))) 
-        #     surface.blit(bandiera, (self.x, self.y))
-        # if self.numeri:
-        #     font = pygame.font.Font(None, 74)
-        #     text = font.render(self.valore, True, (255, 255, 255))
-        #     surface.blit(text, (self.x+15, self.y+7))
-        
+
 

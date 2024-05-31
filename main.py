@@ -29,28 +29,6 @@ clock = pygame.time.Clock()
 fps = 60
 
 
-# celle = []
-# for riga in range(2, numero_righe):
-#     riga_celle = []
-#     for colonna in range(numero_colonne):
-#         cella = Cella(colonna * larghezza_cella, riga * altezza_cella, larghezza_cella, altezza_cella, riga, colonna, colore, valore)
-#         riga_celle.append(cella)
-#     celle.append(riga_celle)
-
-# mine = 0
-# while mine<11:
-#     riga = randint(0, numero_righe-1)
-#     colonna = randint(0, numero_colonne-1)
-#     if celle[riga][colonna].valore != "B":
-#         celle[riga][colonna].valore = "B"
-#         mine+= 1
- 
-# for riga in celle:
-#     for cella in riga:
-#         if cella.valore != "B":
-#             cella.valore = cella.contamine()
-
-
 def schermatainiziale():
     schermo.fill ((0,0,0))
     rect = pygame.Rect(150, 300, 200, 100)
@@ -75,38 +53,23 @@ while True:
                     start_rect = pygame.Rect(x_start, y_start, larghezza_start, altezza_start)
                     if start_rect.collidepoint(pos):
                         cliccato = True
+                    if cliccato:
+                        if tavolo.rect.collidepoint(pos):
+                            tavolo.cambia_colore(pos)
+                if event.button == 3:
+                    pos = pygame.mouse.get_pos()
+                    if cliccato:
+                        if tavolo.rect.collidepoint(pos):
+                            tavolo.bandiera(pos)
+
 
         
-    #     pos = pygame.mouse.get_pos()
-    #     if event.type == pygame.MOUSEBUTTONDOWN :
-    #         for riga in celle:
-    #             for cella in riga:
-    #                 if cella.rect.collidepoint(pos):
-    #                     if event.button == 1:  
-    #                         cella.cambia_colore(schermo)
-    #                         cella.stampa_numero()
-    #                     elif event.button == 3: 
-    #                         cella.bandiera()
-                
-        
-    # pos = pygame.mouse.get_pos()
-    # for riga in celle:
-    #     for cella in riga:
-    #         if cella.rect.collidepoint(pos):
-    #             cella.sbiadisci(schermo)
-    #         else:
-    #             cella.draw(schermo)
-                
-    
-    # for riga in celle:
-    #     for cella in riga:
-    #         cella.draw(schermo)
-    #         # cella.stampa_numero(schermo)
+       
     
 
 
     if cliccato:
-        schermo.fill((0, 0, 0))
+        schermo.fill((8, 9, 11))
         tavolo.draw()
         barra.draw()
 
