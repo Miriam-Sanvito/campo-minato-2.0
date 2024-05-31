@@ -1,5 +1,6 @@
 import pygame, sys
 from cella import Cella
+from random import randint
 
 class Tavolo:
     def __init__(self, screen, pos, size):
@@ -33,6 +34,28 @@ class Tavolo:
             for cella in riga:
                 if cella.rect.collidepoint(pos):
                     cella.bandiera()
+    
+    def stampa_numero(self, pos):
+        for riga in self.celle:
+            for cella in riga:
+                if cella.rect.collidepoint(pos):
+                    cella.stampa_numero()
+    
+    def bomba(self, pos):
+        for riga in self.celle:
+            for cella in riga:
+                if cella.rect.collidepoint(pos):
+                    if cella.valore == "B":
+                        cella.bomba()
+    
+    def piazza_mine(self):
+        mine = 0
+        while mine<10:
+            riga = randint(0, self.nrighe-1)
+            colonna = randint(0, self.ncolonne-1)
+            if self.celle[riga][colonna].valore != "B":
+                self.celle[riga][colonna].valore = "B"
+                mine+= 1
 
 
 

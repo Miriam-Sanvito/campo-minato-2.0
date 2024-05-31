@@ -17,6 +17,7 @@ class Cella:
         self.rect = pygame.Rect(x, y, larghezza, altezza )
         self.bandiere = False
         self.numero = False
+        self.bombe = False
         self.valore = valore
     
     
@@ -35,13 +36,13 @@ class Cella:
             tavolo.blit(bandiera, (self.x, self.y))
         if self.numero:
             font = pygame.font.Font(None, 74)
-            text = font.render(self.valore, True, (255, 255, 255))
+            text = font.render(str(self.valore), True, (255, 255, 255))
             tavolo.blit(text, (self.x+15, self.y+7))
-    
+        if self.bombe:
+            bomba = pygame.image.load('bomba.png')
+            bomba = pygame.transform.scale(bomba, (int(self.larghezza), int(self.altezza)))
+            tavolo.blit(bomba, (self.x, self.y))
 
-    
-
-    
     def cambia_colore(self):
         if self.colore == self.colore1:
             self.colore = self.colore3
@@ -56,7 +57,14 @@ class Cella:
     #     self.colore = colore_iniziale
 
     def bandiera(self):
-        self.bandiere = True 
+        self.bandiere = True
+    
+    def stampa_numero(self):
+        if self.bandiere == False:
+            self.numero = True
+    
+    def bomba(self):
+        self.bombe = True
     
 
         

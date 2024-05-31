@@ -4,7 +4,7 @@ class Barra:
         self.size = size 
         self.schermo = schermo
         self.pos = pos
-        self.colore = (250,10,20)
+        self.colore = (0, 0, 0)
         self.image = pygame.Surface(self.size)
         self.rect = pygame.Rect(pos[0], pos[1], size[0], size[1])
 

@@ -41,6 +41,7 @@ barra = Barra(schermo, (0,0), (larghezza_schermo,  75))
 
 cliccato = False
 
+tavolo.piazza_mine()
 while True:
     
     for event in pygame.event.get():
@@ -56,6 +57,8 @@ while True:
                     if cliccato:
                         if tavolo.rect.collidepoint(pos):
                             tavolo.cambia_colore(pos)
+                            tavolo.stampa_numero(pos)
+                            tavolo.bomba(pos)
                 if event.button == 3:
                     pos = pygame.mouse.get_pos()
                     if cliccato:
@@ -69,7 +72,7 @@ while True:
 
 
     if cliccato:
-        schermo.fill((8, 9, 11))
+        schermo.fill((8, 92, 11))
         tavolo.draw()
         barra.draw()
 
