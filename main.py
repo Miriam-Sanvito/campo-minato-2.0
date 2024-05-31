@@ -1,4 +1,5 @@
 import pygame, sys 
+import time
 from cella import Cella
 from pygame.locals import *
 from random import randint
@@ -60,6 +61,7 @@ def schermatainiziale():
 
 tavolo = Tavolo(schermo, (0, 75), (larghezza_schermo, altezza_schermo-75))
 barra = Barra(schermo, (0,0), (larghezza_schermo,  75))
+tempo_trascorso = barra.aggiorna_timer()
 
 cliccato = False
 
