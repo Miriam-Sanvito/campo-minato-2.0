@@ -5,16 +5,15 @@ from random import randint
 from tavolo import Tavolo
 from barra import Barra
 
-larghezza_schermo = 500
-altezza_schermo = 500
+larghezza_schermo = 600
+altezza_schermo = 600
 dimensioni_schermo = (larghezza_schermo, altezza_schermo)
 schermo = pygame.display.set_mode(dimensioni_schermo)
 pygame.display.set_caption("campo minato")
 pygame.init()
 pygame.font.init()
 
-colore = ()
-valore = '!'
+
 numero_colonne = 10
 numero_righe = 8
 altezza_cella = (altezza_schermo/numero_righe)
@@ -59,7 +58,7 @@ def schermatainiziale():
     pygame.display.flip()
     
 
-tavolo = Tavolo(schermo, (0, 75), larghezza_schermo, altezza_schermo-75, numero_righe, numero_colonne)
+tavolo = Tavolo(schermo, (0, 75), (larghezza_schermo, altezza_schermo-75))
 barra = Barra(schermo, (0,0), (larghezza_schermo,  75))
 
 cliccato = False

@@ -4,12 +4,10 @@ class Barra:
         self.size = size 
         self.schermo = schermo
         self.pos = pos
+        self.colore = (250,10,20)
         self.image = pygame.Surface(self.size)
-
-    def scritta(self):
-        scritta = "campo minato"
+        self.rect = pygame.Rect(pos[0], pos[1], size[0], size[1])
 
     def draw(self):
-       self.image.fill((78,98,54) )
-       self.schermo.blit(self.image, self.pos)
+       pygame.draw.rect(self.schermo, self.colore, self.rect, 5 )
 
