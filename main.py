@@ -67,35 +67,19 @@ y_fine = (altezza_schermo/2+32)
 larghezza_fine = 150
 altezza_fine = 60
 
-# class Bottone_playagain:
-#     def __init__(self, screen, pos, size):
-#         self.screen = screen
-#         self.pos = pos 
-#         self.size = size
-#         self.image = pygame.Surface(size)
-#         self.rect = pygame.Rect(pos[0], pos[1], size[0], size[1])
-#         self.gameover = False
-#         self.colore_sfondo = (255, 255, 255)  # Bianco per lo sfondo
-#         self.colore_bordo = (255, 111, 0)
-        
-#         font = pygame.font.Font("font.ttf", 0)
-#         self.testo = font.render("riprova", True, (255, 111, 0))
-#         self.testo_rect = self.testo.get_rect(center=(size[0] // 2, size[1] // 2))
-    
-#     def draw(self):
-#         self.image.fill(self.colore_sfondo)  
-#         pygame.draw.rect(self.image, self.colore_bordo, self.image.get_rect(), 5) 
-#         self.image.blit(self.testo, self.testo_rect)
-#         self.screen.blit(self.image, self.rect)
+
 
 def schermatafinale():
     schermo.fill ((0,0,0))
     immagine = pygame.image.load('gameover.jpg')
     immagine = pygame.transform.scale(immagine, (larghezza_schermo, altezza_schermo))
     schermo.blit(immagine, (0,0))
-    # bottone = Bottone_playagain(schermo, (x_start, y_start), (larghezza_start, altezza_start))
-    # bottone.draw()
-    
+
+
+
+
+
+
 
 tavolo = Tavolo(schermo, (0, 75), (larghezza_schermo, altezza_schermo-75))
 barra = Barra(schermo, (0,0), (larghezza_schermo,  75))
@@ -125,6 +109,7 @@ while True:
                     start_rect = pygame.Rect(x_start, y_start, larghezza_start, altezza_start)
                     if start_rect.collidepoint(pos):
                         gioco_iniziato = True
+                    
                 else:
                     if event.button == 1:
                         if tavolo.rect.collidepoint(pos):
@@ -133,10 +118,6 @@ while True:
                             else:
                                 tavolo.cambia_colore(pos)
                                 tavolo.stampa_numero(pos)
-                        
-                        #     tavolo.perso(pos)
-                        # if tavolo.perso(pos):
-                        #     Gameover = True
 
                 if event.button == 3:
                     pos = pygame.mouse.get_pos()
@@ -155,12 +136,11 @@ while True:
         schermatainiziale()
     
     if gioco_finito:
+        tavolo.mostra_bombe() 
+        tavolo.draw()  
         schermatafinale()
-
-    
-    # if Gameover:
-    #     schermatafinale()
-    
+        pygame.display.flip()
+        
     
     pygame.display.flip()
     clock.tick(fps)  
