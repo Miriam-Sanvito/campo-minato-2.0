@@ -9,9 +9,8 @@ class Cella:
         self.altezza = altezza 
         self.colore1= (158,250,105)
         self.colore2= (91,186,35)
-        self.colore3= (233, 242, 228)
-        self.colore4= (191, 204, 184)
-        self.colore5 = (247, 247, 247)
+        self.colore3= (191, 204, 184)
+        self.colore4= (137, 161, 143)
         self.valore = valore
         self.image = pygame.Surface((larghezza, altezza))
         self.rect = pygame.Rect(x, y, larghezza, altezza )
@@ -20,6 +19,7 @@ class Cella:
         self.bombe = False
         self.valore = valore
         self.schiacciata = False
+        self.perso = False
     
     
 
@@ -49,13 +49,6 @@ class Cella:
             self.colore = self.colore3
         elif self.colore == self.colore2:
             self.colore = self.colore4
-        
-    
-    # def sbiadisci(self, surface):
-    #     colore_iniziale = self.colore
-    #     self.colore = self.colore5
-    #     self.draw(surface)
-    #     self.colore = colore_iniziale
 
     def bandiera(self):
         self.bandiere = True
@@ -67,6 +60,9 @@ class Cella:
     
     def bomba(self):
         self.bombe = True
+    
+    def perso(self):
+        self.perso = True
     
 
         

@@ -29,7 +29,7 @@ altezza_start = 60
 clock = pygame.time.Clock()
 fps = 60
 
-class Bottone:
+class Bottone_play:
     def __init__(self, screen, pos, size):
         self.screen = screen
         self.pos = pos 
@@ -55,7 +55,42 @@ def schermatainiziale():
     immagine = pygame.image.load('inizialecampominato.jpeg')
     immagine = pygame.transform.scale(immagine, (larghezza_schermo, altezza_schermo))
     schermo.blit(immagine, (0,0))
-    bottone = Bottone(schermo, (x_start, y_start), (larghezza_start, altezza_start))
+    bottone = Bottone_play(schermo, (x_start, y_start), (larghezza_start, altezza_start))
+    bottone.draw()
+
+#schermata finale
+x_fine= (larghezza_schermo/2-65)
+y_fine = (altezza_schermo/2+32)
+larghezza_fine = 150
+altezza_fine = 60
+
+class Bottone_playagain:
+    def __init__(self, screen, pos, size):
+        self.screen = screen
+        self.pos = pos 
+        self.size = size
+        self.image = pygame.Surface(size)
+        self.rect = pygame.Rect(pos[0], pos[1], size[0], size[1])
+        self.gameover = False
+        self.colore_sfondo = (255, 255, 255)  # Bianco per lo sfondo
+        self.colore_bordo = (255, 111, 0)
+        
+        font = pygame.font.Font("font.ttf", 50)
+        self.testo = font.render("play again", (0.4), (255, 111, 0))
+        self.testo_rect = self.testo.get_rect(center=(size[0] // 2, size[1] // 2))
+    
+    def draw(self):
+        self.image.fill(self.colore_sfondo)  
+        pygame.draw.rect(self.image, self.colore_bordo, self.image.get_rect(), 5) 
+        self.image.blit(self.testo, self.testo_rect)
+        self.screen.blit(self.image, self.rect)
+
+def schermatafinale():
+    schermo.fill ((0,0,0))
+    immagine = pygame.image.load('gameover.jpg')
+    immagine = pygame.transform.scale(immagine, (larghezza_schermo, altezza_schermo))
+    schermo.blit(immagine, (0,0))
+    bottone = Bottone_playagain(schermo, (x_start, y_start), (larghezza_start, altezza_start))
     bottone.draw()
     
 
@@ -64,6 +99,7 @@ barra = Barra(schermo, (0,0), (larghezza_schermo,  75))
 tempo_trascorso = barra.aggiorna_timer()
 
 cliccato = False
+Gameover = True
 
 tavolo.piazza_mine()
 
@@ -90,6 +126,9 @@ while True:
                             tavolo.cambia_colore(pos)
                             tavolo.stampa_numero(pos)
                             tavolo.bomba(pos)
+                            tavolo.perso(pos)
+                        if tavolo.perso(pos):
+                            Gameover = True
 
                 if event.button == 3:
                     pos = pygame.mouse.get_pos()
@@ -109,6 +148,9 @@ while True:
 
     else:
         schermatainiziale()
+    
+    if Gameover:
+        schermatafinale()
     
     
     pygame.display.flip()

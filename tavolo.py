@@ -68,7 +68,13 @@ class Tavolo:
                         if riga != cella.riga or colonna!=cella.colonna:
                             mine+=1
             return mine
-
+    
+    def perso(self, pos):
+        for riga in self.celle:
+            for cella in riga:
+                if cella.rect.collidepoint(pos):
+                    if cella.valore == "B":
+                        cella.perso()
 
 
 
