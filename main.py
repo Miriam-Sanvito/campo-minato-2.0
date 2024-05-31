@@ -39,7 +39,7 @@ class Bottone:
         self.colore_sfondo = (255, 255, 255)  # Bianco per lo sfondo
         self.colore_bordo = (255, 111, 0)
         
-        font = pygame.font.Font("/Users/sofiagianni/campo minato /ArchivoBlack-Regular.ttf", 50)
+        font = pygame.font.Font("font.ttf", 50)
         self.testo = font.render("play", (0.4), (255, 111, 0))
         self.testo_rect = self.testo.get_rect(center=(size[0] // 2, size[1] // 2))
     
@@ -64,6 +64,11 @@ barra = Barra(schermo, (0,0), (larghezza_schermo,  75))
 cliccato = False
 
 tavolo.piazza_mine()
+
+for i, riga in enumerate(tavolo.celle):
+    for j, cella in enumerate(riga):
+        if tavolo.celle[i][j].valore != 'B':
+            tavolo.celle[i][j].valore=tavolo.contamine(cella)
 while True:
     
     for event in pygame.event.get():

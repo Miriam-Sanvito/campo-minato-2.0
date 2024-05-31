@@ -56,6 +56,19 @@ class Tavolo:
             if self.celle[riga][colonna].valore != "B":
                 self.celle[riga][colonna].valore = "B"
                 mine+= 1
+    
+    def contamine(self, cella):
+        mine = 0
+        for riga in range(cella.riga-1, cella.riga+2):
+            for colonna in range(cella.colonna-1, cella.colonna+2):
+                if 0<= riga and riga < 8 and 0 <= colonna and colonna < 10 and cella.valore!='B':
+                    if type(self.celle[riga][colonna]) == int:
+                        self.celle[riga][colonna]=Cella(self.pos0+ colonna * self.larghezza_cella, self.pos1 * riga * self.altezza_cella, self.larghezza_cella, self.altezza_cella, riga, colonna, valore=0)
+                    if self.celle[riga][colonna].valore == 'B':
+                        if riga != cella.riga or colonna!=cella.colonna:
+                            mine+=1
+            return mine
+
 
 
 
