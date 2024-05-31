@@ -47,6 +47,8 @@ class Tavolo:
                 if cella.rect.collidepoint(pos):
                     if cella.valore == "B":
                         cella.bomba()
+                        return True
+        return False
     
     def piazza_mine(self):
         mine = 0
@@ -69,12 +71,12 @@ class Tavolo:
                             mine+=1
         return mine
     
-    def perso(self, pos):
-        for riga in self.celle:
-            for cella in riga:
-                if cella.rect.collidepoint(pos):
-                    if cella.valore == "B":
-                        cella.perso()
+    # def perso(self, pos):
+    #     for riga in self.celle:
+    #         for cella in riga:
+    #             if cella.rect.collidepoint(pos):
+    #                 if cella.valore == "B":
+    #                     cella.perso()
 
 
 

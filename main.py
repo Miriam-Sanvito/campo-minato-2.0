@@ -29,6 +29,9 @@ altezza_start = 60
 clock = pygame.time.Clock()
 fps = 60
 
+
+
+
 class Bottone_play:
     def __init__(self, screen, pos, size):
         self.screen = screen
@@ -64,34 +67,34 @@ y_fine = (altezza_schermo/2+32)
 larghezza_fine = 150
 altezza_fine = 60
 
-class Bottone_playagain:
-    def __init__(self, screen, pos, size):
-        self.screen = screen
-        self.pos = pos 
-        self.size = size
-        self.image = pygame.Surface(size)
-        self.rect = pygame.Rect(pos[0], pos[1], size[0], size[1])
-        self.gameover = False
-        self.colore_sfondo = (255, 255, 255)  # Bianco per lo sfondo
-        self.colore_bordo = (255, 111, 0)
+# class Bottone_playagain:
+#     def __init__(self, screen, pos, size):
+#         self.screen = screen
+#         self.pos = pos 
+#         self.size = size
+#         self.image = pygame.Surface(size)
+#         self.rect = pygame.Rect(pos[0], pos[1], size[0], size[1])
+#         self.gameover = False
+#         self.colore_sfondo = (255, 255, 255)  # Bianco per lo sfondo
+#         self.colore_bordo = (255, 111, 0)
         
-        font = pygame.font.Font("font.ttf", 50)
-        self.testo = font.render("play again", (0.4), (255, 111, 0))
-        self.testo_rect = self.testo.get_rect(center=(size[0] // 2, size[1] // 2))
+#         font = pygame.font.Font("font.ttf", 0)
+#         self.testo = font.render("riprova", True, (255, 111, 0))
+#         self.testo_rect = self.testo.get_rect(center=(size[0] // 2, size[1] // 2))
     
-    def draw(self):
-        self.image.fill(self.colore_sfondo)  
-        pygame.draw.rect(self.image, self.colore_bordo, self.image.get_rect(), 5) 
-        self.image.blit(self.testo, self.testo_rect)
-        self.screen.blit(self.image, self.rect)
+#     def draw(self):
+#         self.image.fill(self.colore_sfondo)  
+#         pygame.draw.rect(self.image, self.colore_bordo, self.image.get_rect(), 5) 
+#         self.image.blit(self.testo, self.testo_rect)
+#         self.screen.blit(self.image, self.rect)
 
 def schermatafinale():
     schermo.fill ((0,0,0))
     immagine = pygame.image.load('gameover.jpg')
     immagine = pygame.transform.scale(immagine, (larghezza_schermo, altezza_schermo))
     schermo.blit(immagine, (0,0))
-    bottone = Bottone_playagain(schermo, (x_start, y_start), (larghezza_start, altezza_start))
-    bottone.draw()
+    # bottone = Bottone_playagain(schermo, (x_start, y_start), (larghezza_start, altezza_start))
+    # bottone.draw()
     
 
 tavolo = Tavolo(schermo, (0, 75), (larghezza_schermo, altezza_schermo-75))
@@ -99,8 +102,8 @@ barra = Barra(schermo, (0,0), (larghezza_schermo,  75))
 tempo_trascorso = barra.aggiorna_timer()
 
 cliccato = False
-Gameover = True
 gioco_iniziato= False
+gioco_finito = False
 
 tavolo.piazza_mine()
 
@@ -116,7 +119,7 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
-        if event.type == MOUSEBUTTONDOWN:
+        if event.type == MOUSEBUTTONDOWN and not gioco_finito:
                 pos = pygame.mouse.get_pos()
                 if not gioco_iniziato:
                     start_rect = pygame.Rect(x_start, y_start, larghezza_start, altezza_start)
@@ -125,10 +128,12 @@ while True:
                 else:
                     if event.button == 1:
                         if tavolo.rect.collidepoint(pos):
-                            tavolo.rect.collidepoint(pos)
-                            tavolo.cambia_colore(pos)
-                            tavolo.stampa_numero(pos)
-                            tavolo.bomba(pos)
+                            if tavolo.bomba(pos):
+                                gioco_finito = True
+                            else:
+                                tavolo.cambia_colore(pos)
+                                tavolo.stampa_numero(pos)
+                        
                         #     tavolo.perso(pos)
                         # if tavolo.perso(pos):
                         #     Gameover = True
@@ -138,9 +143,7 @@ while True:
                     if gioco_iniziato:
                         if tavolo.rect.collidepoint(pos):
                                 tavolo.bandiera(pos)
-                                nbandiere -= 1
-                                
-                            
+                                nbandiere -= 1  
 
 
 
@@ -150,6 +153,9 @@ while True:
         barra.draw(nbandiere)
     else:
         schermatainiziale()
+    
+    if gioco_finito:
+        schermatafinale()
 
     
     # if Gameover:
