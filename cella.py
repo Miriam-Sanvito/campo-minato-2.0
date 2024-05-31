@@ -20,6 +20,7 @@ class Cella:
         self.valore = valore
         self.schiacciata = False
         self.perso = False
+       
     
     
 
@@ -36,9 +37,10 @@ class Cella:
             bandiera = pygame.transform.scale(bandiera, (int(self.larghezza), int(self.altezza))) 
             tavolo.blit(bandiera, (self.x, self.y))
         if self.numero:
-            font = pygame.font.Font(None, 74)
-            text = font.render(str(self.valore), True, (255, 255, 255))
-            tavolo.blit(text, (self.x+15, self.y+7))
+            if self.valore != "B":
+                font = pygame.font.Font(None, 74)
+                text = font.render(str(self.valore), True, (255, 255, 255))
+                tavolo.blit(text, (self.x+15, self.y+7))
         if self.bombe:
             bomba = pygame.image.load('bomba.png').convert_alpha()
             bomba = pygame.transform.scale(bomba, (int(self.larghezza), int(self.altezza)))

@@ -24,7 +24,7 @@ class Barra:
         return tempo_trascorso
 
     def draw(self, nbandiere):
-       self.image.fill((255, 255, 255))
+       self.image.fill((33, 99, 42))
        pygame.draw.rect(self.schermo, self.colore, self.rect, 5 )
        testo_timer = self.font.render(f"{self.aggiorna_timer()}", True, (255, 0, 0))
        self.image.blit(testo_timer, (65, 30))
